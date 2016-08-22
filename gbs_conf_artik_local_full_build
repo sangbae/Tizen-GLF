@@ -1,0 +1,27 @@
+[general]
+tmpdir=/var/tmp/
+profile = profile.tizen3.0_common_artik
+work_dir=.
+fallback_to_native=true
+
+[repo.tizen3.0_arm_base]
+url=${work_dir}/BASE
+
+[repo.tizen3.0_arm_base_public]
+url=http://download.tizen.org/releases/weekly/tizen/base/latest/repos/arm/packages/
+
+[repo.tizen3.0_local_arm]
+url=${work_dir}/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/
+
+[repo.tizen3.0_public_arm]
+url=http://download.tizen.org/releases/weekly/tizen/common_artik/tizen-common-artik_20160721.17/repos/arm-wayland/packages/
+
+[profile.tizen3.0_common]
+#repos=repo.tizen3.0_arm_base,repo.tizen3.0_public_arm
+#repos=repo.tizen3.0_local_arm,repo.tizen3.0_arm_base,repo.tizen3.0_public_arm,repo.tizen3.0_arm_base_public
+#repos=repo.tizen3.0_public_arm,repo.tizen3.0_arm_base_public
+repos=repo.tizen3.0_local_arm,repo.tizen3.0_arm_base,repo.tizen3.0_public_arm
+buildroot = ${work_dir}/GBS-ROOT/
+#buildconf=${work_dir}/scm/meta/build-config/build.conf
+
+
