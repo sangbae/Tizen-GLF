@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <include name="_remote.xml" />
+  <default revision="accepted/tizen_common"
+           remote="tizen-gerrit"
+           sync-j="4" />
+  <include name="common/metadata.xml" />
+  <include name="common/ca-projects.xml" />
+</manifest>
