@@ -62,7 +62,7 @@ repoinit()
 if [ -d .repo ]; then
 	echo "repo init has already done before"
 else 
-	repoinit()
+	repoinit
 fi 
 
 repo sync -f -q
@@ -98,11 +98,11 @@ if [ -d $base_dir ]; then
 	read yorn
 	if [ $yorn -eq "Y" ]; then 
 		sudo \rm -r $base_dir/*
-		base_download()
+		base_download
 	fi
 else 
 	mkdir -p $base_dir
-	baes_download()
+	baes_download
 fi
 echo "------------------------------------------------------------------"
 
