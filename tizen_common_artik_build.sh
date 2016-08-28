@@ -43,7 +43,9 @@ if [ -f $work_dir ]; then
 	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
 fi if [ -f $base_dir ]; then
 	echo "base directory exists already [$base_dir]"
-else mkdir -p $base_dir echo "base directory for Tizen-common for ARTIK-10 = $base_dir"
+else 
+	mkdir -p $base_dir 
+	echo "base directory for Tizen-common for ARTIK-10 = $base_dir"
 fi
 
 # Step1: repo sync
@@ -53,7 +55,8 @@ repo init -u $manifest_url -b tizen -m common.xml
 #repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
 
 
-cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ cp ../Tizen-GLF/common.xml .repo/manifests/
+cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ 
+cp ../Tizen-GLF/common.xml .repo/manifests/
 
 repo sync -f -q
 cd ..
@@ -72,10 +75,11 @@ if [ -d $base_dir ]; then
 	echo " [Y]es? >"
 	read yorn
 	if [ yorn -eq "Y" ]; then 
-		sudo \rm -r $base_dir
+		sudo \rm -r $base_dir/*
 		base_download()
 	fi
 else 
+	mkdir -p $base_dir
 	baes_download()
 fi
 
