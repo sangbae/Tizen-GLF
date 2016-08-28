@@ -41,7 +41,9 @@ if [ -f $work_dir ]; then
 	echo "work directory exists already [$work_dir]" else 
 	mkdir -p $work_dir
 	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
-fi if [ -f $base_dir ]; then
+fi 
+
+if [ -f $base_dir ]; then
 	echo "base directory exists already [$base_dir]"
 else 
 	mkdir -p $base_dir 
