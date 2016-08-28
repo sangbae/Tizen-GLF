@@ -77,7 +77,7 @@ if [ -d $base_dir ]; then
 	echo "do you want to download base packages ?"
 	echo " [Y]es? >"
 	read yorn
-	if [ yorn -eq "Y" ]; then 
+	if [ $yorn -eq "Y" ]; then 
 		sudo \rm -r $base_dir/*
 		base_download()
 	fi
