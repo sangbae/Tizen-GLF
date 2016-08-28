@@ -38,7 +38,8 @@ read userid
 work_dir=./tizen_common_artik
 base_dir=./tizen_base
 if [ -d $work_dir ]; then
-	echo "work directory exists already [$work_dir]" else 
+	echo "work directory exists already [$work_dir]" 
+else 
 	mkdir -p $work_dir
 	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
 fi 
