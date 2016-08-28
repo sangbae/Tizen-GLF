@@ -39,12 +39,10 @@ work_dir=./tizen_common_artik
 base_dir=./tizen_base
 
 if [ -f $work_dir ]; then
-	echo "work directory exists already [$work_dir]"
-else 
+	echo "work directory exists already [$work_dir]" else 
 	mkdir -p $work_dir
 	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
-fi
-
+fi 
 if [ -f $base_dir ]; then
 	echo "base directory exists already [$base_dir]"
 else 
@@ -68,7 +66,15 @@ cd ..
 # Step 2: Tizen Base-packages download
 cd $base_dir
 wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
-
+cd ..
 
 # Step 3: build Tizen-Common locally
-cp
+cd $work_dir
+cp ../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
+gbs build -A armv7l 
+
+
+# Step 4: create boot image
+sudo mic cr auto ../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
+# Step 3: create platform image 
+sudo mic cr auto ../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
