@@ -127,11 +127,13 @@ echo "------------------------------------------------------------------"
 
 # Step 3: build Tizen-Common locally
 echo "------------------------------------------------------------------"
-echo "                       build  Common packages"
+echo "                       START: build  Common packages"
 echo "------------------------------------------------------------------"
 cd $work_dir
-cp ../../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
+sudo cp ../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
 time gbs build -A armv7l --baselibs --clean-once 
+echo "------------------------------------------------------------------"
+echo "                       DONE: build  Common packages"
 echo "------------------------------------------------------------------"
 
 
@@ -139,10 +141,10 @@ echo "------------------------------------------------------------------"
 echo "------------------------------------------------------------------"
 echo "                       creating boot image for ARTIK-10"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
 # Step 3: create platform image 
 echo "------------------------------------------------------------------"
 echo "                   creating platform common image for ARTIK"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
 echo "------------------------------------------------------------------"

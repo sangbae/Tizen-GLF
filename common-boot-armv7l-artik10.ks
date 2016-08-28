@@ -20,7 +20,7 @@ user --name guest  --groups audio,video --password 'tizen'
 
 repo --name=base_arm_local --baseurl=file://../tize-base/ --priority=2
 #repo --name=base_arm --baseurl=http://download.tizen.org/releases/weekly/tizen/base/latest/repos/arm/packages/ --ssl_verify=no 
-repo --name=common-wayland_armv7l_local --baseurl=file://../GBS-ROOT/local/repos/tizen3.0_common/armv7l/ --priority=1
+repo --name=common-wayland_armv7l_local --baseurl=file://./GBS-ROOT/local/repos/tizen3.0_common/armv7l/ --priority=1
 repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/releases/weekly/tizen/common_artik/latest/repos/arm-wayland/packages/ --ssl_verify=no --priority=99
 
 %packages
