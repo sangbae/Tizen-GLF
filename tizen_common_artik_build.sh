@@ -30,7 +30,9 @@
 # tip: please use ssh to download source codes, not http. (download speed will be very significant)
 
 # account information in review.tizen.org
-userid="your account id"  # here, please modify your id of review.tizen.org
+echo "Enter your id for review.tizen.org>"
+read userid
+#userid="your account id"  # here, please modify your id of review.tizen.org
 
 # Step1: working environment
 work_dir=./tizen_common_artik
