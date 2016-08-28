@@ -65,6 +65,10 @@ cp ../Tizen-GLF/common.xml .repo/manifests/
 repo sync -f -q
 cd ..
 
-# Tizen Base-packages download
+# Step 2: Tizen Base-packages download
 cd $base_dir
 wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
+
+
+# Step 3: build Tizen-Common locally
+cp
