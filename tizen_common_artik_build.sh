@@ -59,19 +59,34 @@ repoinit()
 	cp ../Tizen-GLF/common.xml .repo/manifests/
 }
 
+reposync()
+{
+echo "-----------------------------------------------------------------------"
+echo "Syncing Repository based on tizen-common-artik_20160721.17_platform.xml"
+echo "-----------------------------------------------------------------------"
+	repo sync -f -q
+	echo " ended repo sync "
+echo "-----------------------------------------------------------------------"
+}
 if [ -d .repo ]; then
 	echo "repo init has already done before"
+	echo "do you want to run repo sync again?>"
+	read yorno
+	if [ $yorno = "Y" ]; then 
+		reposync
+	else 
+		echo "skip repo sync"
+	fi
+	
 else 
 	repoinit
 fi 
 
-repo sync -f -q
-echo " end repo sync "
 cd ..
 #for debugging this script
 echo "do you want to continue to download base packages? >"
 read yorno
-if [ $yorno == "Y" ]; then 
+if [ $yorno = "Y" ]; then 
   echo "continue"
 else 
   echo "stop by you"
@@ -96,7 +111,7 @@ if [ -d $base_dir ]; then
 	echo "do you want to download base packages ?"
 	echo " [Y]es? >"
 	read yorn
-	if [ $yorn -eq "Y" ]; then 
+	if [ $yorn = "Y" ]; then 
 		sudo \rm -r $base_dir/*
 		base_download
 	fi
