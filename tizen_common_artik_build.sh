@@ -44,12 +44,6 @@ else
 	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
 fi 
 
-if [ -d $base_dir ]; then
-	echo "base directory exists already [$base_dir]"
-else 
-	mkdir -p $base_dir 
-	echo "base directory for Tizen-common for ARTIK-10 = $base_dir"
-fi
 
 # Step1: repo sync
 cd $work_dir
@@ -62,13 +56,19 @@ cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/comm
 cp ../Tizen-GLF/common.xml .repo/manifests/
 
 repo sync -f -q
+echo " end repo sync "
 cd ..
 
 # Step 2: Tizen Base-packages download
+echo "------------------------------------------------------------------"
+echo "                       BASE PACKAGES"
+echo "------------------------------------------------------------------"
 base_download()
 {
 	cd $base_dir
+	echo " start downloading base packages from public repository"
 	wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
+	echo " end downloading base packages from public repository"
 	cd ..
 }
 
@@ -85,15 +85,27 @@ else
 	mkdir -p $base_dir
 	baes_download()
 fi
+echo "------------------------------------------------------------------"
 
 
 # Step 3: build Tizen-Common locally
+echo "------------------------------------------------------------------"
+echo "                       build  Common packages"
+echo "------------------------------------------------------------------"
 cd $work_dir
 cp ../../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
 time gbs build -A armv7l --baselibs --clean-once 
+echo "------------------------------------------------------------------"
 
 
 # Step 4: create boot image
+echo "------------------------------------------------------------------"
+echo "                       creating boot image for ARTIK-10"
+echo "------------------------------------------------------------------"
 time sudo mic cr auto ../../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
 # Step 3: create platform image 
+echo "------------------------------------------------------------------"
+echo "                   creating platform common image for ARTIK"
+echo "------------------------------------------------------------------"
 time sudo mic cr auto ../../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
+echo "------------------------------------------------------------------"
