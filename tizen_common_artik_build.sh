@@ -58,8 +58,8 @@ repo init -u $manifest_url -b tizen -m common.xml
 #repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
 
 
-cp ../../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ 
-cp ../../Tizen-GLF/common.xml .repo/manifests/
+cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ 
+cp ../Tizen-GLF/common.xml .repo/manifests/
 
 repo sync -f -q
 cd ..
