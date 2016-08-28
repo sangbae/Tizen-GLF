@@ -47,17 +47,36 @@ fi
 
 # Step1: repo sync
 cd $work_dir
-manifest_url=ssh://$userid@review.tizen.org:29418/scm/manifest
-repo init -u $manifest_url -b tizen -m common.xml
-#repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
+
+repoinit()
+{
+	manifest_url=ssh://$userid@review.tizen.org:29418/scm/manifest
+	repo init -u $manifest_url -b tizen -m common.xml
+	#repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
 
 
-cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ca-projects.xml
-cp ../Tizen-GLF/common.xml .repo/manifests/
+	cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ca-projects.xml
+	cp ../Tizen-GLF/common.xml .repo/manifests/
+}
+
+if [ -d .repo ]; then
+	echo "repo init has already done before"
+else 
+	repoinit()
+fi 
 
 repo sync -f -q
 echo " end repo sync "
 cd ..
+#for debugging this script
+echo "do you want to continue to download base packages? >"
+read yorno
+if [ $yorno == "Y" ]; then 
+  echo "continue"
+else 
+  echo "stop by you"
+  exit 1
+fi
 
 # Step 2: Tizen Base-packages download
 echo "------------------------------------------------------------------"
