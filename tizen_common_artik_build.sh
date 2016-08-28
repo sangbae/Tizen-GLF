@@ -58,8 +58,8 @@ repo init -u $manifest_url -b tizen -m common.xml
 #repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
 
 
-cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ 
-cp ../Tizen-GLF/common.xml .repo/manifests/
+cp ../../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ 
+cp ../../Tizen-GLF/common.xml .repo/manifests/
 
 repo sync -f -q
 cd ..
@@ -89,11 +89,11 @@ fi
 
 # Step 3: build Tizen-Common locally
 cd $work_dir
-cp ../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
+cp ../../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
 time gbs build -A armv7l --baselibs --clean-once 
 
 
 # Step 4: create boot image
-time sudo mic cr auto ../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
 # Step 3: create platform image 
-time sudo mic cr auto ../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
