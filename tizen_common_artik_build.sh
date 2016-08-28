@@ -83,15 +83,18 @@ else
 fi 
 
 cd ..
+
+
 #for debugging this script
-echo "do you want to continue to download base packages? >"
-read yorno
-if [ $yorno = "Y" ]; then 
-  echo "continue"
-else 
-  echo "stop by you"
-  exit 1
-fi
+#echo "do you want to continue to download base packages? >"
+#read yorno
+#if [ $yorno = "Y" ]; then 
+#  echo "continue"
+#else 
+#  echo "stop by you"
+#  exit 1
+#fi
+#
 
 # Step 2: Tizen Base-packages download
 echo "------------------------------------------------------------------"
@@ -108,7 +111,7 @@ base_download()
 
 if [ -d $base_dir ]; then
 	echo "$base_dir exist already"
-	echo "do you want to download base packages ?"
+	echo "do you want to download base packages?"
 	echo " [Y]es? >"
 	read yorn
 	if [ $yorn = "Y" ]; then 
