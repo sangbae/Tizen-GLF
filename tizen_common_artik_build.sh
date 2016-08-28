@@ -30,11 +30,11 @@
 # tip: please use ssh to download source codes, not http. (download speed will be very significant)
 
 # account information in review.tizen.org
-userid="your account id" // please modify your id of review.tizen.org
+userid="your account id"  # here, please modify your id of review.tizen.org
 
 # Step1: working environment
-work_dir=../tizen_common_artik
-base_dir=../tizen_base
+work_dir=./tizen_common_artik
+base_dir=./tizen_base
 
 if [ -f $work_dir ]; then
 	echo "work directory exists already [$work_dir]"
@@ -52,13 +52,17 @@ fi
 
 # Step1: repo sync
 cd $work_dir
-repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
+manifest_url=ssh://$userid@review.tizen.org:29418/scm/manifest
+repo init -u $manifest_url -b tizen -m common.xml
+#repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
+
+
 cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/
 cp ../Tizen-GLF/common.xml .repo/manifests/
 
 repo sync -f -q
+cd ..
 
 # Tizen Base-packages download
-cd ..
 cd $base_dir
 wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
