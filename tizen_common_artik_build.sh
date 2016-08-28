@@ -22,18 +22,43 @@
 # Normally this is called as './tizen_common_artik_build.sh <opt1>'
 #
 #
-# please make sure that you followed both 1) Tizen Development Environment Setup 
-# and 2) Installing Development Tools 
-# 1) guides are here: https://source.tizen.org/ko/documentation/developer-guide/environment-setup?langredirect=1
-# 2) guides are here: https://source.tizen.org/ko/documentation/developer-guide/getting-started-guide/installing-development-tools
+# please make sure that you followed both 
+# 1) Tizen Development Environment Setup 
+#    guide: https://source.tizen.org/ko/documentation/developer-guide/environment-setup?langredirect=1
+# 2) Installing Development Tools 
+#    guide:  https://source.tizen.org/ko/documentation/developer-guide/getting-started-guide/installing-development-tools
 # tip: please use ssh to download source codes, not http. (download speed will be very significant)
 
 # account information in review.tizen.org
-userid="your account id"
+userid="your account id" // please modify your id of review.tizen.org
+
+# Step1: working environment
+work_dir=../tizen_common_artik
+base_dir=../tizen_base
+
+if [ -f $work_dir ]; then
+	echo "work directory exists already [$work_dir]"
+else 
+	mkdir -p $work_dir
+	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
+fi
+
+if [ -f $base_dir ]; then
+	echo "base directory exists already [$base_dir]"
+else 
+	mkdir -p $base_dir
+	echo "base directory for Tizen-common for ARTIK-10 = $base_dir"
+fi
+
 # Step1: repo sync
+cd $work_dir
 repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
+cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/
+cp ../Tizen-GLF/common.xml .repo/manifests/
+
+repo sync -f -q
 
 # Tizen Base-packages download
-mkdir -p ./BASE
-cd ./BASE
+cd ..
+cd $base_dir
 wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
