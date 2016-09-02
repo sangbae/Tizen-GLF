@@ -35,18 +35,18 @@ read userid
 #userid="your account id"  # here, please modify your id of review.tizen.org
 
 # Step1: working environment
-work_dir=./tizen_common_artik
+builddir=./tizen_common_artik
 base_dir=./tizen_base
-if [ -d $work_dir ]; then
-	echo "work directory exists already [$work_dir]" 
+if [ -d $builddir ]; then
+	echo "work directory exists already [$builddir]" 
 else 
-	mkdir -p $work_dir
-	echo "work directory for Tizen-common for ARTIK-10 = $work_dir"
+	mkdir -p $builddir
+	echo "work directory for Tizen-common for ARTIK-10 = $builddir"
 fi 
 
 
 # Step1: repo sync
-cd $work_dir
+cd $builddir
 
 repoinit()
 {
@@ -130,7 +130,7 @@ echo "------------------------------------------------------------------"
 echo "                       START: build  Common packages"
 echo "------------------------------------------------------------------"
 
-cd $work_dir
+cd $builddir
 echo " working directory: $(pwd)"
 sudo cp -f ../Tizen-GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
 time gbs build -A armv7l --baselibs --clean-once 
