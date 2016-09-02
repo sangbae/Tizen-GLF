@@ -129,8 +129,10 @@ echo "------------------------------------------------------------------"
 echo "------------------------------------------------------------------"
 echo "                       START: build  Common packages"
 echo "------------------------------------------------------------------"
+
 cd $work_dir
-sudo cp ../Tizen_GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
+echo " working directory: $(pwd)"
+sudo cp -f ../Tizen-GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
 time gbs build -A armv7l --baselibs --clean-once 
 echo "------------------------------------------------------------------"
 echo "                       DONE: build  Common packages"
