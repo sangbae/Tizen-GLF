@@ -2,20 +2,20 @@
 <manifest>
   <!--<remote fetch="ssh://review.tizen.org" name="tizen-gerrit" review="https://review.tizen.org/gerrit"/>
   <default remote="tizen-gerrit"/>-->
-  <project name="apps/core/preloaded/boot-animation" path="apps/core/preloaded/boot-animation" revision="4fdcd2cf371dbf3b47cd8a51569eb241cf1eb7b5"/>
+  <project name="apps/native/boot-animation" path="apps/native/boot-animation" revision="4fdcd2cf371dbf3b47cd8a51569eb241cf1eb7b5"/>
   <project name="apps/core/preloaded/indicator-win" path="apps/core/preloaded/indicator-win" revision="c292650633d7f8d8677bc35b46eb0a6978c66aa2"/>
   <project name="apps/core/preloaded/lockscreen" path="apps/core/preloaded/lockscreen" revision="2ad16980e24c178a1cfdbc28bcb4bf74db109e42"/>
-  <project name="apps/core/preloaded/menu-screen" path="apps/core/preloaded/menu-screen" revision="0cae2cd4c0e24bf2319afd75b45b7fd0e0b1decb"/>
+  <project name="apps/native/menu-screen" path="apps/native/menu-screen" revision="0cae2cd4c0e24bf2319afd75b45b7fd0e0b1decb"/>
   <project name="apps/core/preloaded/print-service" path="apps/core/preloaded/print-service" revision="348ceaf48e90b0e539c1e832fc370306e03d7218"/>
   <project name="apps/core/preloaded/quickpanel" path="apps/core/preloaded/quickpanel" revision="41c58bfcb5ddd4c4d3f0f1c0597a4567c0bca6ba"/>
-  <project name="apps/core/preloaded/starter" path="apps/core/preloaded/starter" revision="3948ad2acd7ba0bfd485c3ad610aebd101b0284b"/>
+  <project name="apps/native/starter" path="apps/native/starter" revision="3948ad2acd7ba0bfd485c3ad610aebd101b0284b"/>
   <project name="apps/core/preloaded/taskmanager" path="apps/core/preloaded/taskmanager" revision="fa22e8bb732718c685704274dc2ca4627d7083cb"/>
   <project name="apps/native/ug-bluetooth-efl" path="apps/native/ug-bluetooth-efl" revision="d9d277c65f501a8f4b983fade6fb40209a5e7306"/>
   <project name="apps/native/ug-mobile-ap" path="apps/native/ug-mobile-ap" revision="2d5a9dddce436d1eabb55042a42b9cc78d1b3846"/>
   <project name="apps/native/ug-nfc-efl" path="apps/native/ug-nfc-efl" revision="aa3c922f31e523ef427131ebf9add2aca56d654a"/>
   <project name="apps/native/ug-wifi-direct" path="apps/native/ug-wifi-direct" revision="406427c087a0126392b6acbab7bded54c04e448e"/>
   <project name="apps/native/ug-wifi-efl" path="apps/native/ug-wifi-efl" revision="1e2b1a1750ab076c5bbdc7db1871740ac6661658"/>
-  <project name="apps/core/preloaded/volume-app" path="apps/core/preloaded/volume-app" revision="0b7252e4da0cf88a28b7671e5f0fcaf9f00e62ca"/>
+  <project name="apps/native/volume-app" path="apps/native/volume-app" revision="0b7252e4da0cf88a28b7671e5f0fcaf9f00e62ca"/>
   <project name="apps/web/browser" path="apps/web/browser" revision="c180d67b5a8486fee8bd5acf38f761bbe9431f5d"/>
   <project name="apps/web/download-manager" path="apps/web/download-manager" revision="23080cf836d6d1a1989dbaccbdd96f9a63a4cc13"/>
   <project name="platform/adaptation/ap_samsung/libomxil-e54xx" path="platform/adaptation/ap_samsung/libomxil-e54xx" revision="e87e53055449875622b1a44e27611ff7bf4f2df1"/>
