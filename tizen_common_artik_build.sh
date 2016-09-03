@@ -133,12 +133,15 @@ copy_gbsconf()
 {
 	rm -rf $builddir/.gbs.conf
 	cp ./Tizen-GLF/gbs_conf_artik_local_full_build $builddir/.gbs.conf
-	sed -i '8d' $builddir/.gbs.conf
-	sed -i '7a 'url=$(pwd)'/'$base_name'/' $builddir/.gbs.conf
-	sed -i '14d' $builddir/.gbs.conf
-	sed -i '13a 'url=$(pwd)'/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/' $builddir/.gbs.conf
-	sed -i '24d' $builddir/.gbs.conf
-	sed -i '23a 'url=$(pwd)'/GBS-ROOT'
+	sed -i '4d' $builddir/.gbs.conf
+	sed -i '3a work_dir='$(pwd)'' $builddir/.gbs.conf
+
+#	sed -i '8d' $builddir/.gbs.conf
+#	sed -i '7a 'url=$(pwd)'/'$base_name'/' $builddir/.gbs.conf
+#	sed -i '14d' $builddir/.gbs.conf
+#	sed -i '13a 'url=$(pwd)'/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/' $builddir/.gbs.conf
+#	sed -i '24d' $builddir/.gbs.conf
+#	sed -i '23a 'buildroot=$(pwd)'/GBS-ROOT'
 	
 }
 
