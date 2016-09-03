@@ -5,7 +5,7 @@ work_dir=.
 fallback_to_native=true
 
 [repo.tizen3.0_arm_base]
-url=../tizen_base
+url=$(work_dir)/tizen_base
 
 [repo.tizen3.0_arm_base_public]
 url=http://download.tizen.org/releases/weekly/tizen/base/latest/repos/arm/packages/

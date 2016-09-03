@@ -80,6 +80,7 @@ if [ -d .repo ]; then
 	
 else 
 	repoinit
+	reposync
 fi 
 
 cd ..
@@ -106,6 +107,7 @@ base_download()
 	echo " start downloading base packages from public repository"
 	wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
 	echo " end downloading base packages from public repository"
+	createrepo --update $base_dir
 	cd ..
 }
 
@@ -126,14 +128,34 @@ echo "------------------------------------------------------------------"
 
 
 # Step 3: build Tizen-Common locally
+copy_gbsconf()
+{
+	rm -rf ./$builddir/.gbs.conf
+	sed '8d' ../Tizen-GLF/gbs_conf_artik_local_full_build | \
+	sed '7a '$(pwd)'/tizen_bae' > ./$builddir/.gbs.conf
+	
+}
+
 echo "------------------------------------------------------------------"
 echo "                       START: build  Common packages"
 echo "------------------------------------------------------------------"
 
 cd $builddir
 echo " working directory: $(pwd)"
-sudo cp -f ../Tizen-GLF/gbs_conf_artik_local_full_build  ./.gbs.conf
-time gbs build -A armv7l --baselibs --clean-once 
+
+	echo "do you want to copy .gbs.conf?"
+	echo "you must sure that you didn't change base_dir"
+	echo " [Y]es? >"
+	read yorn
+	if [ $yorn = "Y" ]; then 
+		copy_gbsconf
+	fi
+	echo "do you want to build 3.0 packages?" 
+	echo " [Y]es? >"
+	read yorn
+	if [ $yorn = "Y" ]; then 
+		time gbs build -A armv7l --baselibs --clean-once 
+	fi
 echo "------------------------------------------------------------------"
 echo "                       DONE: build  Common packages"
 echo "------------------------------------------------------------------"
