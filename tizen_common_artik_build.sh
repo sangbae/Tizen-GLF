@@ -132,8 +132,9 @@ echo "------------------------------------------------------------------"
 copy_gbsconf()
 {
 	rm -rf $builddir/.gbs.conf
-	sed '8d' ../Tizen-GLF/gbs_conf_artik_local_full_build | \
-	sed '7a '$(pwd)'/'$base_name'' > $builddir/.gbs.conf
+	cp ./Tizen-GLF/gbs_conf_artik_local_full_build $builddir/.gbs.conf
+	sed -i '8d' $builddir/.gbs.conf
+	sed -i '7a 'url=$(pwd)'/'$base_name'/' $builddir/.gbs.conf
 	
 }
 
