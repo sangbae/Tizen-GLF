@@ -137,8 +137,8 @@ copy_gbsconf()
 	sed -i '7a 'url=$(pwd)'/'$base_name'/' $builddir/.gbs.conf
 	sed -i '14d' $builddir/.gbs.conf
 	sed -i '13a 'url=$(pwd)'/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/' $builddir/.gbs.conf
-	sed -i '27d' $builddir/.gbs.conf
-	sed -i '26a 'url=$(pwd)'/GBS-ROOT'
+	sed -i '24d' $builddir/.gbs.conf
+	sed -i '23a 'url=$(pwd)'/GBS-ROOT'
 	
 }
 
