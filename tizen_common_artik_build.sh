@@ -63,7 +63,8 @@ reposync()
 echo "-----------------------------------------------------------------------"
 echo "Syncing Repository based on tizen-common-artik_20160721.17_platform.xml"
 echo "-----------------------------------------------------------------------"
-	cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ca-projects.xml
+#	cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ca-projects.xml
+	cp ../Tizen-GLF/tizen-common_20161021.3_arm-wayland.xml .repo/manifests/common/ca-projects.xml
 	cp ../Tizen-GLF/common.xml .repo/manifests/
 	repo sync -f -q
 	echo " ended repo sync "
@@ -136,7 +137,7 @@ copy_gbsconf()
 	sed -i '8d' $builddir/.gbs.conf
 	sed -i '7a 'url=$(pwd)'/'$base_name'/' $builddir/.gbs.conf
 	sed -i '14d' $builddir/.gbs.conf
-	sed -i '13a 'url=$(pwd)'/'$builddir'/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/' $builddir/.gbs.conf
+	sed -i '13a 'url=$(pwd)'/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/' $builddir/.gbs.conf
 	sed -i '24d' $builddir/.gbs.conf
 	sed -i '23a buildroot='$(pwd)'/GBS-ROOT'  $builddir/.gbs.conf
 	

@@ -14,7 +14,7 @@ url=http://download.tizen.org/releases/weekly/tizen/base/latest/repos/arm/packag
 url=${work_dir}/GBS-ROOT/local/repos/tizen3.0_common_artik/armv7l/RPMS/
 
 [repo.tizen3.0_public_arm]
-url=http://download.tizen.org/releases/weekly/tizen/common_artik/latest/repos/arm-wayland/packages/
+url=http://download.tizen.org/snapshots/tizen/common_artik/latest/repos/arm-wayland/packages/
 
 [profile.tizen3.0_common_artik]
 #repos=repo.tizen3.0_arm_base,repo.tizen3.0_public_arm
