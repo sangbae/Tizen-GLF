@@ -61,10 +61,9 @@ repoinit()
 reposync()
 {
 echo "-----------------------------------------------------------------------"
-echo "Syncing Repository based on tizen-common-artik_20160721.17_platform.xml"
+echo "Syncing Repository based on tizen-common-artik_20170111.3_arm-wayland.xml"
 echo "-----------------------------------------------------------------------"
-#	cp ../Tizen-GLF/tizen-common-artik_20160721.17_platform.xml .repo/manifests/common/ca-projects.xml
-	cp ../Tizen-GLF/tizen-common_20161021.3_arm-wayland.xml .repo/manifests/common/ca-projects.xml
+	cp ../Tizen-GLF/tizen-common-artik_20170111.3_arm-wayland.xml .repo/manifests/common/ca-projects.xml
 	cp ../Tizen-GLF/common.xml .repo/manifests/
 	repo sync -f -q
 	echo " ended repo sync "
@@ -124,7 +123,7 @@ if [ -d $base_dir ]; then
 	fi
 else 
 	mkdir -p $base_dir
-	baes_download
+	base_download
 fi
 echo "------------------------------------------------------------------"
 

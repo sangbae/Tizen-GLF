@@ -19,19 +19,291 @@ bootloader  --timeout=3  --append="rw vga=current splash rootwait rootfstype=ext
 desktop --autologinuser=guest  
 user --name guest  --groups audio,video --password 'tizen'
 
-repo --name=base_arm_local --baseurl=file://../tizen-base/ --ssl_verify=no --priority=2
-repo --name=base_arm_public --baseurl=http://download.tizen.org/releases/weekly/tizen/base/latest/repos/arm/packages/ --ssl_verify=no
-repo --name=common-artik-local --baseurl=file://./GBS-ROOT/local/repos/tizen3.0_common/armv7l/ --ssl_verify=no --priority=1
-repo --name=common-artik-public --baseurl=http://download.tizen.org/releases/weekly/tizen/common_artik/latest/repos/arm-wayland/packages/ --ssl_verify=no --priority=99
+
+repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/snapshots/tizen/common_artik/tizen-common-artik_20170111.3/repos/arm-wayland/packages/ --ssl_verify=no
+repo --name=base_arm --baseurl=http://download.tizen.org/snapshots/tizen/3.0.m2-base/latest/repos/arm/packages/ --ssl_verify=no
 
 %packages
 
-@Generic Adaptation
-@Common Adaptation
-@Common Adaptation Artik
+# @ Generic Adaptation
+linux-firmware
+system-plugin
+# @ Common Adaptation
+meta-generic-adaptation
+# @ Common Adaptation Artik
+SDL2
+alsa-ucm-data-ak4953
+alsa-utils
+amd
+anthy
+app-installers
+app2sd
+appcore-agent
+appcore-widget
+argos_watchdog
+askuser
+askuser-notification
+askuser-plugins
+audio-hal-ak4953
+bash
+bluetooth-firmware-bcm-artik
+bluetooth-frwk-core
+bluetooth-frwk-service
+bluetooth-share
+bluez
+boot-animation
+browser-provider
+buxton2
+ca-certificates
+cairo
+calendar-service
+call-manager
+capi-appfw-alarm
+capi-base-utils
+capi-content-mime-type
+capi-maps-service
+capi-media-codec
+capi-media-controller
+capi-media-metadata-editor
+capi-media-metadata-extractor
+capi-media-recorder
+capi-media-screen-mirroring
+capi-media-streamer
+capi-media-streamrecorder
+capi-media-thumbnail-util
+capi-media-video-util
+capi-media-vision
+capi-mediademuxer
+capi-mediamuxer
+capi-network-bluetooth-test
+capi-network-mtp
+capi-network-nfc
+capi-network-nsd
+capi-network-smartcard
+capi-network-wifi-manager
+capi-system-media-key
+capi-system-runtime-info
+capi-telephony
+capi-ui-inputmethod
+capi-ui-inputmethod
+capi-ui-inputmethod-manager
+capi-web-url-download
+cert-svc
+chromium-efl
+connman
+contacts-service2
+context
+cordova-api
+coreutils
+crash-worker
+crosswalk-tizen
+cryptsetup
+csr-framework
+cynara
+d2d-conv-manager
+d2d-conv-manager-lib
+dali
+dali-adaptor
+dali-adaptor-dali-video-player-plugin
+dali-toolkit
+data-control
+data-provider-master
+default-ac-domains
+default-fonts-fc-sdk
+default-fonts-sdk
+device-manager-plugin-artik
+device-mapper
+device-policy-manager
+dlogutil
+dlogutil
+download-fonts-service
+drm-service-core-tizen
+e-mod-tizen-devicemgr
+e-mod-tizen-eom
+e-mod-tizen-keyrouter
+e-mod-tizen-processmgr
+e-mod-tizen-wl-textinput
+e-mod-tizen-wm-policy
+e-tizen-data
+e2fsprogs
+efl-config
+efl-misc
+efl-modules
+efl-theme-tizen-common
+elementary-locale
+elementary-tools
+emotion
+esd
+eventsystem
+filesystem
+fsck-msdos
+glibc-locale
+gssdp
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-tizen
+gst-plugins-ugly
+gstreamer
+gstreamer-utils
+gum-utils
+iotcon
+iotivity
+ise-default
+ise-engine-anthy
+ise-engine-default
+ise-engine-hangul
+ise-engine-sunpinyin
+ise-engine-tables
+isf
+isf-config-common
+key-manager
+key-manager-pam-plugin
+kmod
+kmod-compat
+krate
+launchpad
+libaskuser-common
+libcall-manager
+libcore-sync-client
+libcsr-framework-client
+libcynara-creds-commons
+libcynara-creds-dbus
+libcynara-creds-gdbus
+libcynara-creds-socket
+libcynara-monitor
+libdpm
+libeom
+libhangul
+libharfbuzz
+libkey-manager-client
+libkey-manager-common
+libkrate
+libmm-imgp-gstcs
+libmm-player
+libnsd-dns-sd
+libnsd-ssdp
+libnss-security-manager
+libomxil-e54xx
+libpepper-efl
+libscl-ui
+libspeex
+libtbm-exynos
+libtcore
+libtdm-client
+libtdm-drm
+libwayland-tbm-client
+libwayland-tbm-server
+libwebsockets
+libwidget_service
+libwidget_viewer
+libwidget_viewer_evas
+linux-firmware
+maps-plugin-mapzen
+mdnsresponder
+media-thumbnail-server
+memps
+message-port
+minicontrol
+mmfw-sysconf-target-artik10
+mmsvc-camera
+mmsvc-player
+mmsvc-recorder
+model-config-artik
+motion
+murphy
+neard
+neardal
+net-tools
+newfs-msdos
+nfc-client-lib-neard
+nghttp2
+nodejs
+oauth2
+obexd
+org.tizen.bt-syspopup
+org.tizen.dpm-syspopup
+org.tizen.dpm-toolkit
+org.tizen.elm-demo-tizen-common
+org.tizen.inputmethod-setting
+org.tizen.menu-screen
+org.tizen.screen-reader
+org.tizen.setting
+org.tizen.stt-engine-default
+org.tizen.tts-engine-default
+pam
+pam-locale
+pepper
+pkgmgr-server
+pkgmgr-tool
+privilege-checker
+privilege-info
+procps-ng
+psmisc
+pubkey-pinning
+pulseaudio
+pulseaudio-module-bluetooth
+pulseaudio-modules-tizen
+pulseaudio-utils
+resourced
+rfkill
+rpm
+rpm-security-plugin
+sdbd
+security-manager
+security-privilege-manager
+service-adaptor
+setup
+shadow-utils-adm
+sqlite3
+starter
+stt
+system-plugin
+system-plugin-u3
+system-upgrade
+systemd
+systemd-user-helper
+tizen-debug
+tizen-locale
+tizen-locale
+tizen-release
+tlm
+tlm-config-common-singleseat
+toybox
+toybox-symlinks-dhcp
+toybox-symlinks-dhcpd
+tpk-backend
+ttrace
+ttrace-extension
+tts-engine-rsc
+tzdata
+tzsh
+ug-bluetooth-efl
+util-linux
+vc-engine-default
+vconf-internal-keys
+vconf-internal-keys-config-profile_common
+voice-control
+voice-control-elm
+vpnc
+webapi-plugins
+wgt-backend
+wgt-backend
+wifi-direct-manager
+wifi-direct-plugin-wpasupplicant
+wifi-efl-ug
+wpa_supplicant
+xdelta3
+xkb-tizen-data
+xkeyboard-config
+yaca
+# Others
+
 
 
 -bluetooth-tools-no-firmware
+
 %end
 
 
@@ -56,17 +328,17 @@ test -d /var && cp -arf /var/* /opt/var/
 rm -rf /var
 ln -snf opt/var /var
 
-test ! -e /opt/home && mkdir -p /opt/home
-test -d /home && cp -arf /home/* /opt/home/
+test ! -e /opt/usr/home && mkdir -p /opt/usr/home
+test -d /home && cp -arf /home/* /opt/usr/home/
 rm -rf /home
-ln -snf opt/home /home
+ln -snf opt/usr/home /home
 
 build_ts=$(date -u +%s)
 build_date=$(date -u --date @$build_ts +%Y%m%d_%H%M%S)
 build_time=$(date -u --date @$build_ts +%H:%M:%S)
 
 sed -ri \
-	-e 's|@BUILD_ID[@]|tizen-common-artik_20160721.17|g' \
+	-e 's|@BUILD_ID[@]|tizen-common-artik_20170111.3|g' \
 	-e "s|@BUILD_DATE[@]|$build_date|g" \
 	-e "s|@BUILD_TIME[@]|$build_time|g" \
 	-e "s|@BUILD_TS[@]|$build_ts|g" \
@@ -78,9 +350,6 @@ cat <<'EOF' >>/usr/lib/systemd/user/default.target
 Description=User session default target
 EOF
 mkdir -p /usr/lib/systemd/user/default.target.wants
-
-# start dbus session
-ln -s ../dbus.service /lib/systemd/user/default.target.wants/
 
 # sdx: fix smack labels on /var/log
 chsmack -a '*' /var/log
@@ -167,9 +436,10 @@ fi
 
 #}
 
-# tag the background image with the current snapshot id
-arch=$(rpm -qa | grep kernel-common | awk -F- '{printf("%s %s",$3,$4);}')
-/usr/bin/mark_image.py /usr/share/backgrounds/tizen/current "Tizen Common: tizen-common-artik_20160721.17 $arch" ffffff 50 90 95 95
+# tag the background image with the current snapshot id and change the background image
+mv /opt/share/settings/Wallpapers/home_001.png /opt/share/settings/Wallpapers/home_005.png
+ln -fs /opt/share/settings/Wallpapers/home_004.png /opt/share/settings/Wallpapers/home_001.png
+/usr/bin/mark_image.py /opt/share/settings/Wallpapers/home_001.png "Tizen 3.0 Common: tizen-common-artik_20170111.3" ffffff 10 60 95 70
 
 
 #!/bin/sh
@@ -228,11 +498,6 @@ echo "#################### generic-crosswalk.post ####################"
 #!/bin/sh
 echo "############### common-crosswalk.post ################"
 
-# workaround to stop xwalk from dumping and killing flash
-if [ -f /usr/bin/wrt-loader ] ; then
-	mv /usr/bin/wrt-loader /usr/bin/wrt-loader2
-fi
-
 # start wrt widgets preinstall
 prepare_widgets.sh
 
@@ -269,6 +534,22 @@ if [ -e /usr/share/security-config/set_capability ]; then
 	/usr/share/security-config/set_capability
 fi
 
+#!/bin/sh
+echo "#################### generic-fixed-multiuser.post ####################"
+
+fmu_path=/usr/share/fixed_multiuser
+fmu_script=${fmu_path}/fixed-multi-user.sh
+
+if [ -d ${fmu_path} ]
+then
+	if [ -e ${fmu_script} ]
+	then
+		/bin/sh ${fmu_path}/fixed-multi-user.sh
+	fi
+
+	rm -rf ${fmu_path}
+fi
+
 
 %end
 
@@ -277,7 +558,7 @@ fi
 if [ -n "$IMG_NAME" ]; then
 	echo "BUILD_ID=$IMG_NAME" >> $INSTALL_ROOT/etc/tizen-release
 	echo "BUILD_ID=$IMG_NAME" >> $INSTALL_ROOT/etc/os-release
-	echo "$IMG_NAME tizen-common-artik_20160721.17" >>$INSTALL_ROOT/etc/tizen-snapshot
+	echo "$IMG_NAME tizen-common-artik_20170111.3" >>$INSTALL_ROOT/etc/tizen-snapshot
 fi
 
 

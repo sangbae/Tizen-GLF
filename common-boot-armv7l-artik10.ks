@@ -18,16 +18,17 @@ desktop --autologinuser=guest
 user --name guest  --groups audio,video --password 'tizen'
 
 
-repo --name=base_arm_local --baseurl=file://../tize-base/ --priority=2
-#repo --name=base_arm --baseurl=http://download.tizen.org/releases/weekly/tizen/base/latest/repos/arm/packages/ --ssl_verify=no 
-repo --name=common-wayland_armv7l_local --baseurl=file://./GBS-ROOT/local/repos/tizen3.0_common/armv7l/ --priority=1
-repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/releases/weekly/tizen/common_artik/latest/repos/arm-wayland/packages/ --ssl_verify=no --priority=99
+repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/snapshots/tizen/common_artik/tizen-common-artik_20170111.3/repos/arm-wayland/packages/ --ssl_verify=no
 
 %packages
 
-@Generic Adaptation
-@Common Adaptation
-@Common Boot Artik 10
+# @ Common Boot Artik 10
+arm-artik10-linux-kernel
+arm-artik10-linux-kernel-modules
+u-boot-artik10
+# Others
+
+
 
 
 %end
@@ -41,27 +42,9 @@ repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/releases/w
 %end
 
 %post
-#!/bin/sh
-echo "#################### generic-adaptation.post ####################"
-
-# fix TIVI-2291
-sed -ri "s/(^blacklist i8042.*$)/#fix from base-general.post \1/" /etc/modprobe.d/blacklist.conf
-
-
-#!/bin/sh
-echo "############### common-adaptation.post ################"
-
-
 
 %end
 
 %post --nochroot
-####################### buildname.nochroot #######################
-if [ -n "$IMG_NAME" ]; then
-	echo "BUILD_ID=$IMG_NAME" >> $INSTALL_ROOT/etc/tizen-release
-	echo "BUILD_ID=$IMG_NAME" >> $INSTALL_ROOT/etc/os-release
-	echo "$IMG_NAME @BUILD_ID@" >>$INSTALL_ROOT/etc/tizen-snapshot
-fi
-
 
 %end
