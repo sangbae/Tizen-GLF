@@ -23,5 +23,6 @@ url=http://download.tizen.org/snapshots/tizen/common_artik/latest/repos/arm-wayl
 repos=repo.tizen3.0_local_arm,repo.tizen3.0_arm_base,repo.tizen3.0_public_arm
 buildroot = ${work_dir}/GBS-ROOT/
 #buildconf=${work_dir}/scm/meta/build-config/build.conf
+exclude_packages=bash,bzip2-libs,c-ares,cmake,coreutils,diffutils,eglibc,elfutils-libelf,elfutils-libs,elfutils,fdupes,file,findutils,gawk,gmp,gzip,libacl,libattr,libcap,libcurl,libfile,libgcc,liblua,libstdc++,make,mpc,mpfr,ncurses-libs,nodejs,nspr,nss- softokn-freebl,nss,openssl,patch,popt,rpm-build,rpm-libs,rpm,sed,sqlite,tar,xz-libs,zlib,binutils,gcc,filesystem,aul,libmm-sound,libtool
 
 

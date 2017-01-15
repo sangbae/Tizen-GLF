@@ -46,58 +46,6 @@ else
 fi 
 
 
-# Step1: repo sync
-cd $builddir
-
-repoinit()
-{
-	manifest_url=ssh://$userid@review.tizen.org:29418/scm/manifest
-	repo init -u $manifest_url -b tizen -m common.xml
-	#repo init -u ssh://$userid@review.tizen.org:29418/scm/manifest -b tizen -m common.xml
-
-
-}
-
-reposync()
-{
-echo "-----------------------------------------------------------------------"
-echo "Syncing Repository based on tizen-common-artik_20170111.3_arm-wayland.xml"
-echo "-----------------------------------------------------------------------"
-	cp ../Tizen-GLF/tizen-common-artik_20170111.3_arm-wayland.xml .repo/manifests/common/ca-projects.xml
-	cp ../Tizen-GLF/common.xml .repo/manifests/
-	repo sync -f -q
-	echo " ended repo sync "
-echo "-----------------------------------------------------------------------"
-}
-if [ -d .repo ]; then
-	echo "repo init has already done before"
-	echo "do you want to run repo sync again?>"
-	read yorno
-	if [ $yorno = "Y" ]; then 
-		reposync
-	else 
-		echo "skip repo sync"
-	fi
-	
-else 
-	repoinit
-	reposync
-fi 
-
-cd ..
-
-
-#for debugging this script
-#echo "do you want to continue to download base packages? >"
-#read yorno
-#if [ $yorno = "Y" ]; then 
-#  echo "continue"
-#else 
-#  echo "stop by you"
-#  exit 1
-#fi
-#
-
 # Step 2: Tizen Base-packages download
 echo "------------------------------------------------------------------"
 echo "                       BASE PACKAGES"
@@ -143,8 +91,6 @@ copy_gbsconf()
 }
 
 echo "------------------------------------------------------------------"
-echo "                       START: build  Common packages"
-echo "------------------------------------------------------------------"
 
 echo " working directory: $(pwd)"
 
@@ -155,26 +101,19 @@ echo " working directory: $(pwd)"
 	if [ $yorn = "Y" ]; then 
 		copy_gbsconf
 	fi
-	echo "do you want to build 3.0 packages?" 
-	echo " [Y]es? >"
-	read yorn
-	if [ $yorn = "Y" ]; then 
-		cd $builddir
-		time gbs build -A armv7l --clean --clean-once --include-all
-	fi
-echo "------------------------------------------------------------------"
-echo "                       DONE: build  Common packages"
 echo "------------------------------------------------------------------"
 
 
 # Step 4: create boot image
+cd $builddir
 echo "------------------------------------------------------------------"
 echo "                       creating boot image for ARTIK-10"
+echo " working directory: $(pwd)"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-boot-local-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
 # Step 3: create platform image 
 echo "------------------------------------------------------------------"
 echo "                   creating platform common image for ARTIK"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-artik-platform-local-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
 echo "------------------------------------------------------------------"
