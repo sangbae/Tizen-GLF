@@ -160,7 +160,7 @@ echo " working directory: $(pwd)"
 	read yorn
 	if [ $yorn = "Y" ]; then 
 		cd $builddir
-		time gbs build -A armv7l --baselibs --clean-once 
+		time gbs build -A armv7l --baselibs --clean --clean-once 
 	fi
 echo "------------------------------------------------------------------"
 echo "                       DONE: build  Common packages"

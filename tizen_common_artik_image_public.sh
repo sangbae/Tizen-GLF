@@ -46,10 +46,7 @@ else
 fi 
 
 
-
-
-
-# Step 1: Tizen Base-packages download
+# Step 2: Tizen Base-packages download
 echo "------------------------------------------------------------------"
 echo "                       BASE PACKAGES"
 echo "------------------------------------------------------------------"
@@ -108,13 +105,15 @@ echo "------------------------------------------------------------------"
 
 
 # Step 4: create boot image
+cd $builddir
+
 echo "------------------------------------------------------------------"
 echo "                       creating boot image for ARTIK-10"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-boot-public-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
 # Step 3: create platform image 
 echo "------------------------------------------------------------------"
 echo "                   creating platform common image for ARTIK"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-artik-platform-public-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
 echo "------------------------------------------------------------------"
