@@ -18,7 +18,7 @@ desktop --autologinuser=guest
 user --name guest  --groups audio,video --password 'tizen'
 
 
-repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/snapshots/tizen/common_artik/tizen-common-artik_20170111.3/repos/arm-wayland/packages/ --ssl_verify=no
+repo --name=common-wayland_armv7l --baseurl=http://download.tizen.org/releases/milestone/tizen/3.0.m2/common_artik/tizen-common-artik_20170111.3/repos/arm-wayland/packages/ --ssl_verify=no
 
 %packages
 
