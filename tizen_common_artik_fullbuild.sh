@@ -106,7 +106,7 @@ base_download()
 {
 	cd $base_dir
 	echo " start downloading base packages from public repository"
-	wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/snapshots/tizen/base/latest/repos/arm/packages
+	wget --directory-prefix=./ --mirror --reject index.html* -r -nH --no-parent --cut-dirs=8 http://download.tizen.org/releases/milestone/tizen/3.0.m2/3.0.m2-base/latest/repos/arm/packages 
 	echo " end downloading base packages from public repository"
 	createrepo --update ./
 	cd ..
@@ -160,7 +160,8 @@ echo " working directory: $(pwd)"
 	read yorn
 	if [ $yorn = "Y" ]; then 
 		cd $builddir
-		time gbs build -A armv7l --clean --clean-once --include-all
+		time gbs build -A armv7l 
+		#time gbs build -A armv7l --clean --clean-once --include-all
 	fi
 echo "------------------------------------------------------------------"
 echo "                       DONE: build  Common packages"
@@ -171,10 +172,10 @@ echo "------------------------------------------------------------------"
 echo "------------------------------------------------------------------"
 echo "                       creating boot image for ARTIK-10"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../Tizen-GLF/common-boot-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-boot-local-armv7l-artik10.ks --logfile=./log -o ./mic_images --tmpfs
 # Step 3: create platform image 
 echo "------------------------------------------------------------------"
 echo "                   creating platform common image for ARTIK"
 echo "------------------------------------------------------------------"
-time sudo mic cr auto ../Tizen-GLF/common-artik-platform-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
+time sudo mic cr auto ../Tizen-GLF/common-artik-platform-local-armv7l.ks --logfile=./log -o ./mic_images --tmpfs
 echo "------------------------------------------------------------------"
