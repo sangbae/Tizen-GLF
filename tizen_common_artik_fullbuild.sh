@@ -42,7 +42,7 @@ if [ -d $builddir ]; then
 	echo "work directory exists already [$builddir]" 
 else 
 	mkdir -p $builddir
-	echo "work directory for Tizen-common for ARTIK-10 = $builddir"
+	echo "work directory for Tizen-common for ARTIK = $builddir"
 fi 
 
 
@@ -63,7 +63,8 @@ reposync()
 echo "-----------------------------------------------------------------------"
 echo "Syncing Repository based on tizen-common-artik_20170111.3_arm-wayland.xml"
 echo "-----------------------------------------------------------------------"
-	cp ../Tizen-GLF/tizen-common-artik_20170111.3_arm-wayland.xml .repo/manifests/common/ca-projects.xml
+	wget http://download.tizen.org/releases/milestone/tizen/3.0.m2/common_artik/tizen-common-artik_20170111.3/builddata/manifest/tizen-common-artik_20170111.3_arm-wayland.xml
+	cp ./tizen-common-artik_20170111.3_arm-wayland.xml .repo/manifests/common/ca-projects.xml
 	cp ../Tizen-GLF/common.xml .repo/manifests/
 	repo sync -f -q
 	echo " ended repo sync "
@@ -160,7 +161,7 @@ echo " working directory: $(pwd)"
 	read yorn
 	if [ $yorn = "Y" ]; then 
 		cd $builddir
-		time gbs build -A armv7l 
+		time sudo gbs build -A armv7l 
 		#time gbs build -A armv7l --clean --clean-once --include-all
 	fi
 echo "------------------------------------------------------------------"
